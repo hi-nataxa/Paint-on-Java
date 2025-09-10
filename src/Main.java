@@ -9,12 +9,12 @@ public class Main {
         // caminho da imagem de entrada
         String caminhoEntrada = "entrada.png";
 
-        // cor escolhida para preencher (vermelho)
-        int novaCor = 0xFFFF0000; // ARGB
+        // cor escolhida para preencher
+        int novaCor = 0xFF0000FF;
 
         // coordenada inicial (ponto de clique)
         int startX = 1;
-        int startY = 15;
+        int startY = 1;
 
         // ---------- Usando Pilha ----------
         BufferedImage imgPilha = ManipuladorImagem.carregarImagem(caminhoEntrada);

@@ -28,8 +28,8 @@ public class FloodFillComPilha {
 
             ManipuladorImagem.pintarPixel(img, px, py, novaCor);
 
-            // salvar frame a cada 500 pixels pintados
-            if (++contador % 500 == 0) {
+            // salvar frame a cada x pixels pintados
+            if (++contador % 5000 == 0) {
                 ManipuladorImagem.salvarImagem(img, "saida_pilha_" + contador + ".png");
             }
 
