@@ -2,13 +2,14 @@ package algoritmo;
 
 import estruturas.Fila;
 import estruturas.No;
+import imagem.Animacao;
 import imagem.ManipuladorImagem;
 
 import java.awt.image.BufferedImage;
 
 public class FloodFillComFila {
 
-    public static void preencher(BufferedImage img, int x, int y, int novaCor) {
+    public static void preencher(BufferedImage img, int x, int y, int novaCor, Animacao animacao) {
         int corFundo = ManipuladorImagem.obterCor(img, x, y);
         if (corFundo == novaCor) return;
 
@@ -29,8 +30,10 @@ public class FloodFillComFila {
             ManipuladorImagem.pintarPixel(img, px, py, novaCor);
 
             // salvar frame a cada x pixels pintados
-            if (++contador % 5000 == 0) {
+            if (++contador % 500 == 0) {
                 ManipuladorImagem.salvarImagem(img, "saida_fila_" + contador + ".png");
+                animacao.atualizar(img);
+                try { Thread.sleep(20); } catch (InterruptedException e) {}
             }
 
             fila.enqueue(px + 1, py);
@@ -40,5 +43,6 @@ public class FloodFillComFila {
         }
 
         ManipuladorImagem.salvarImagem(img, "saida_fila_final.png");
+        animacao.atualizar(img);
     }
 }

@@ -1,33 +1,37 @@
 import algoritmo.FloodFillComFila;
 import algoritmo.FloodFillComPilha;
+import imagem.Animacao;
 import imagem.ManipuladorImagem;
 
+import java.awt.Color;
 import java.awt.image.BufferedImage;
 
 public class Main {
     public static void main(String[] args) {
-        // caminho da imagem de entrada
         String caminhoEntrada = "entrada.png";
 
-        // cor escolhida para preencher
-        int novaCor = 0xFF0000FF;
+        Color cor = new Color(128, 0, 128);
+        int novaCor = cor.getRGB();
+        int startX = 150, startY = 250;
 
-        // coordenada inicial (ponto de clique)
-        int startX = 1;
-        int startY = 1;
-
-        // ---------- Usando Pilha ----------
+        // pilha
         BufferedImage imgPilha = ManipuladorImagem.carregarImagem(caminhoEntrada);
         if (imgPilha != null) {
-            FloodFillComPilha.preencher(imgPilha, startX, startY, novaCor);
+            Animacao animacaoPilha = new Animacao(imgPilha.getWidth(), imgPilha.getHeight());
+            FloodFillComPilha.preencher(imgPilha, startX, startY, novaCor, animacaoPilha);
             System.out.println("Flood Fill com PILHA concluído.");
+
+            ManipuladorImagem.salvarImagem(imgPilha, "saida_pilha.png");
         }
 
-        // ---------- Usando Fila ----------
+        // fila
         BufferedImage imgFila = ManipuladorImagem.carregarImagem(caminhoEntrada);
         if (imgFila != null) {
-            FloodFillComFila.preencher(imgFila, startX, startY, novaCor);
+            Animacao animacaoFila = new Animacao(imgFila.getWidth(), imgFila.getHeight());
+            FloodFillComFila.preencher(imgFila, startX, startY, novaCor, animacaoFila);
             System.out.println("Flood Fill com FILA concluído.");
+
+            ManipuladorImagem.salvarImagem(imgFila, "saida_fila.png");
         }
     }
 }
