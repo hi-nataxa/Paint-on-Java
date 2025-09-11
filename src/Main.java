@@ -10,9 +10,9 @@ public class Main {
     public static void main(String[] args) {
         String caminhoEntrada = "entrada.png";
 
-        Color cor = new Color(128, 0, 128);
+        Color cor = new Color(200, 100, 50);
         int novaCor = cor.getRGB();
-        int startX = 150, startY = 250;
+        int startX = 220, startY = 253;
 
         // pilha
         BufferedImage imgPilha = ManipuladorImagem.carregarImagem(caminhoEntrada);
@@ -23,6 +23,15 @@ public class Main {
 
             ManipuladorImagem.salvarImagem(imgPilha, "saida_pilha.png");
         }
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+
+
 
         // fila
         BufferedImage imgFila = ManipuladorImagem.carregarImagem(caminhoEntrada);
